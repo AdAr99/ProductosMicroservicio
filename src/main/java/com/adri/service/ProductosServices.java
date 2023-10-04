@@ -10,4 +10,5 @@ public interface ProductosServices {
     Producto buscar(int codigoproducto);
     void actualizar(int codigoproducto, int stock);
     double obtenerPrecio(int codigoproducto);
+    int buscarStock(int codigoproducto);
 }

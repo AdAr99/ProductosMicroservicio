@@ -37,16 +37,17 @@ public class ProductosServiceImpl implements ProductosServices{
         
         Producto producto = dao.findById(codigoproducto).orElse(null);
         if(producto != null){
-            producto.setStock(producto.getStock() - stock);
+            producto.setStock(producto.getStock()-stock);
             dao.save(producto);
-        } 
+        }
     }
 
     @Override
     public double obtenerPrecio(int codigoproducto) {
        Producto producto = dao.findById(codigoproducto).orElse(null);
        if(producto != null) return producto.getPrecioUnitario();
-       else return -0.0;
+        else return 0;
+       
 
     }
 
@@ -54,6 +55,14 @@ public class ProductosServiceImpl implements ProductosServices{
     public Producto buscar(int codigoproducto) {
        
         return dao.findById(codigoproducto).orElse(null);
+    }
+
+    @Override
+    public int buscarStock(int codigoproducto) {
+        Producto producto = dao.findById(codigoproducto).orElse(null);
+        if(producto != null) return producto.getStock();
+        else return 0;
+
     }
     
 }

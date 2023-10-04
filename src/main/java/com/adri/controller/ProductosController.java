@@ -25,12 +25,17 @@ public class ProductosController {
 
     @PutMapping(value="producto/{codigoproducto}/{stock}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void actualizar(@PathVariable int codigoproducto, @PathVariable int stock){
-            service.actualizar(codigoproducto, stock);
+         service.actualizar(codigoproducto, stock);
     }
 
     @GetMapping(value = "producto/{codigoproducto}", produces = MediaType.APPLICATION_JSON_VALUE)
     public double obtenerPrecio(@PathVariable int codigoproducto){
         return service.obtenerPrecio(codigoproducto);
+    }
+
+    @GetMapping(value = "productoStock/{codigoproducto}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int buscarStock(@PathVariable int codigoproducto){
+        return service.buscarStock(codigoproducto);
     }
 
 }
